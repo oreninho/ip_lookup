@@ -1,0 +1,22 @@
+.input-row {
+  display: flex;
+  align-items: center;
+}
+
+.input-row__index {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: #eee;
+  margin-right: 8px;
+  font-size: 0.9rem;
+}
+
+.input-row__field {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
