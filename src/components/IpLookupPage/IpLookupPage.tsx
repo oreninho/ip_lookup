@@ -21,8 +21,10 @@ export default function IpLookupPage() {
       />
 
       <div className="page__content">
-        <Button className={'stick'} onClick={addRow}  icon={<Plus size={16} color="#fff" />}>
-            {t('ADD_BUTTON_LABEL')}
+        <Button className={'stick'} onClick={addRow} >
+            <Plus size={14} color="#fff" />
+            <span>{t('ADD_BUTTON_LABEL')}</span>
+
         </Button>
 
         <hr className="page__divider" />
