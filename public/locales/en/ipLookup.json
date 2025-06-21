@@ -1,0 +1,8 @@
+{
+  "PLACEHOLDER": "Enter IP address",
+  "TITLE": "IP Lookup",
+  "SUBTITLE": "Enter one or more IP addresses and get their country",
+  "ADD_BUTTON_LABEL": "Add",
+  "LIST_LABEL": "IP Addresses",
+  "INPUT_LABEL": "IP Address {{index}}"
+}

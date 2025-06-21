@@ -1,18 +1,36 @@
+import {memo} from 'react';
 import './InputRow.scss';
+export type InputRowProps = {
+    value: string;
+    disabled?: boolean;
+    onChange: (v: string) => void;
+    onBlur: () => void;
+    error?: string | null;
+    result?: { country: string; flagUrl: string; time: string } | null;
+    placeholder?: string;
+    role?: string;
+};
 
-export interface InputRowProps {
-  index: number;
-}
+export default memo(function InputRow({
+                                                value,
+                                                disabled,
+                                                onChange,
+                                                onBlur,
+                                                placeholder,
+                                                label,
+                                            }: InputRowProps) {
 
-export default function InputRow({ index }: InputRowProps) {
-  return (
-    <div className="input-row">
-      <span className="input-row__index">{index}</span>
-      <input
-        className="input-row__field"
-        type="text"
-        placeholder="e.g. 8.8.8.8"
-      />
-    </div>
-  );
-}
+    return (
+        <div className="input-row" >
+            <input
+                className="input-row__field"
+                value={value}
+                disabled={disabled}
+                onChange={e => onChange(e.target.value)}
+                onBlur={onBlur}
+                placeholder= {placeholder}
+                aria-label={label}
+            />
+        </div>
+    );
+});

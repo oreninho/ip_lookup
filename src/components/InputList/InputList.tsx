@@ -1,17 +1,24 @@
-import InputRow from '../InputRow/InputRow';
 import './InputList.scss';
-import {memo} from "react";
+import IpLookupController from "../IpLookupController/IpLookupContoller";
+import {useEffect, useRef} from "react";
 
-export interface InputListProps {
-  rows: number[];
-}
-
-export default memo(function InputList({ rows }: InputListProps) {
-  return (
-    <div className="input-list">
-      {rows.map((idx) => (
-        <InputRow key={idx} index={idx} />
-      ))}
-    </div>
+export default function InputList({rows,label = 'IP Addresses'}: {}) {
+   const ref = useRef<HTMLDivElement>(null as never as HTMLDivElement );
+    useEffect(() => {
+    ref.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end',
+        inline: 'nearest',
+    });
+    }, [rows.length]);
+    return (
+      <div role={'list'} aria-label={label}>
+        <div className="input-list">
+          {rows.map(idx => (
+              <IpLookupController key={idx} index={idx} role={'listitem'} />
+          ))}
+        </div>
+          <div ref={ref}/>
+      </div>
   );
-})
+}
