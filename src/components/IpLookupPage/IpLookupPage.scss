@@ -13,31 +13,30 @@ $page-padding: 16px;
       border-top: 1px solid #eee;
       margin: 12px 0;
     }
+    .header__title {
+      margin: 0.5rem 0 0 0 ;
+      font-size: 1rem;
+    }
+
+    .header__subtitle {
+      margin-top: 4px;
+      color: #666;
+    }
   }
 
-  .header__title {
-    margin: 0.5rem 0 0 0 ;
-    font-size: 1rem;
-  }
+    .page__content {
+      margin-top: 12px;
+    }
 
-  .header__subtitle {
-    margin-top: 4px;
-    color: #666;
-  }
-  .page__content {
-    margin-top: 12px;
-    margin-left: 6px;
-  }
-
-  .page__divider {
-    border: none;
-    border-top: 1px solid #eee;
-  }
-  .stick {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    margin-bottom: 1rem;
-  }
+    .page__divider {
+      border: none;
+      border-top: 1px solid #eee;
+    }
 }
 
+.stick {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin-bottom: 1rem;
+}

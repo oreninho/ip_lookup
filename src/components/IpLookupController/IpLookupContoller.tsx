@@ -40,7 +40,7 @@ export default function IpLookupController({index, role}:{index?: number, role?:
     return (
         <div className="ip-lookup-controller" role={role}>
             <span className="input-row__index">{index}</span>
-            <div>
+            <div className={'input__container'}>
                 <InputRow
                     value={value}
                     onChange={onChange}

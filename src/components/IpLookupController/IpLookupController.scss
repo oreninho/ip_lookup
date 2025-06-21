@@ -9,6 +9,9 @@
   display: flex;
   align-items: center;
 }
+.input__container{
+  width:70%;
+}
 .spin { animation: spin 1s linear infinite; }
 
 .success {

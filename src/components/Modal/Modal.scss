@@ -1,6 +1,7 @@
 
 .modal{
     margin: 0;
+    padding: 0;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -11,7 +12,8 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow-x: hidden ;
-    height: 50vh;
+    height: 30vh;
+    width: 50vh;
     overflow-y: auto;
     animation: slideIn 1s;
 
@@ -41,7 +43,6 @@
     flex-direction: column;
     background-color: #fff;
     border-radius: 8px;
-    padding: 20px;
 
 }
 
