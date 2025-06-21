@@ -7,6 +7,7 @@ import './IpLookupController.scss';
 import Flag from "../Flag/Flag.tsx";
 import Spinner from "../Spinner/Spinner";
 import {useTranslation} from "react-i18next";
+import ErrorMessage from "../ErrorMessage/ErrorMessage.tsx";
 
 export default function IpLookupController({index, role}:{index?: number, role?: string | undefined}) {
     const {
@@ -20,12 +21,10 @@ export default function IpLookupController({index, role}:{index?: number, role?:
     } = useIpLookup();
     const {t} = useTranslation('ipLookup');
 
+
     const statusNode = useCallback(() => {
         if (isLoading) {
             return <Spinner/>;
-        }
-        if (error) {
-            return <span className="error">❌ {error}</span>;
         }
         if (result) {
             const { country, time } = result;
@@ -41,14 +40,17 @@ export default function IpLookupController({index, role}:{index?: number, role?:
     return (
         <div className="ip-lookup-controller" role={role}>
             <span className="input-row__index">{index}</span>
-            <InputRow
-                value={value}
-                onChange={onChange}
-                onBlur={onLookup}
-                disabled={disabled}
-                placeholder={t('PLACEHOLDER')}
-                label={t('INPUT_LABEL', { index: index })}
-            />
+            <div>
+                <InputRow
+                    value={value}
+                    onChange={onChange}
+                    onBlur={onLookup}
+                    disabled={disabled}
+                    placeholder={t('PLACEHOLDER')}
+                    label={t('INPUT_LABEL', { index: index })}
+                />
+                {error && <ErrorMessage message={error} role="alert" aria-live="assertive" />}
+            </div>
             <div className="input-row__status">
                 { statusNode() }
             </div>
