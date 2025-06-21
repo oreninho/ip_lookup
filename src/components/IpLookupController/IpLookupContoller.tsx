@@ -35,7 +35,7 @@ export default function IpLookupController({index, role}:{index?: number, role?:
             );
         }
         return null;
-    }, [isLoading, error, result]);
+    }, [isLoading, result]);
 
     return (
         <div className="ip-lookup-controller" role={role}>

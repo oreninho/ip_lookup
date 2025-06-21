@@ -1,4 +1,3 @@
-// src/hooks/useIpLookup.ts
 import { useState, useCallback } from 'react';
 import {fetchIpInfo} from '../services/ipLookup/ipLookup';
 import {formatTimeInZone, validateIp} from '../utils/utils.ts';
@@ -26,8 +25,12 @@ export function useIpLookup(initial = '') {
 
     const handleLookup = useCallback(async () => {
         const ip = value.trim();
+        if (!ip) {
+            setError('Please enter an IP address');
+            return;
+        }
         if (!validateIp(ip)) {
-            setError('Invalid IP format, please enter a valid ip, for example 1.1.1.1');
+            setError('Invalid IP format, please enter a valid ip of the form xxx.xxx.xxx.xxx');
             return;
         }
 

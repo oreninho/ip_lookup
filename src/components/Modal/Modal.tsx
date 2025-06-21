@@ -1,7 +1,6 @@
 import './Modal.scss'
 import {useEffect, useRef} from "react";
 
-//TODO: should the content be cleared when the modal is closed?
 export default function Modal({
   children,
   onClose,
@@ -19,11 +18,13 @@ export default function Modal({
     isOpen ? dialog.showModal() : dialog.close();
   }, [isOpen, dialogRef]);
 
+  const handleModalContentClick = (e) => {
+    e.stopPropagation(); // Prevent clicks inside the modal from closing it
+  };
 
   return (
-    <dialog ref={dialogRef} className="modal"
-            onClick={e => e.target === dialogRef.current && onClose()}>
-      <div className="modal__content">
+    <dialog ref={dialogRef} className="modal" onClick={onClose}>
+      <div className="modal__content" onClick={handleModalContentClick}>
         <button className="modal__close" onClick={onClose}>
           &times;
         </button>

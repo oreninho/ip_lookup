@@ -3,9 +3,9 @@ import IpLookupController from "../IpLookupController/IpLookupContoller";
 import {useEffect, useRef} from "react";
 
 export default function InputList({rows,label = 'IP Addresses'}: {}) {
-   const ref = useRef<HTMLDivElement>(null as never as HTMLDivElement );
+   const endOfListRef = useRef<HTMLDivElement>(null as never as HTMLDivElement );
     useEffect(() => {
-    ref.current?.scrollIntoView({
+        endOfListRef.current?.scrollIntoView({
         behavior: 'smooth',
         block: 'end',
         inline: 'nearest',
@@ -18,7 +18,7 @@ export default function InputList({rows,label = 'IP Addresses'}: {}) {
               <IpLookupController key={idx} index={idx} role={'listitem'} />
           ))}
         </div>
-          <div ref={ref}/>
+          <div ref={endOfListRef}/>
       </div>
   );
 }
