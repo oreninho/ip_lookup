@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import {fetchIpInfo} from '../services/ipLookup/ipLookup';
-import {formatTimeInZone, validateIp} from '../utils/utils.ts';
+import {validateIp} from '../utils/utils.ts';
+import {useTranslation} from "react-i18next";
 
 
 export type IpInfo = {
@@ -9,28 +10,28 @@ export type IpInfo = {
 };
 
 export function useIpLookup(initial = '') {
+    const {t} = useTranslation()
     const [value, setValue]     = useState(initial);
     const [isLoading, setLoading] = useState(false);
     const [error, setError]     = useState<string | null>(null);
-    const [result, setResult]   = useState<{
-        country: string;
-        time: string;
-    } | null>(null);
+    const [country, setCountry] = useState<string | null>(null);
+    const [timezone, setTimezone] = useState<string | null>(null);
 
     const handleChange = useCallback((v: string) => {
         setValue(v);
         setError(null);
-        setResult(null);
+        setCountry(null);
+        setTimezone(null);
     }, []);
 
     const handleLookup = useCallback(async () => {
         const ip = value.trim();
         if (!ip) {
-            setError('Please enter an IP address');
+            setError(t('IP_REQUIRED_ERROR_MESSAGE'));
             return;
         }
         if (!validateIp(ip)) {
-            setError('Invalid IP format, please enter a valid ip of the form xxx.xxx.xxx.xxx');
+            setError(t('INVALID_IP_FORMAT_ERROR_MESSAGE'));
             return;
         }
 
@@ -39,7 +40,8 @@ export function useIpLookup(initial = '') {
 
         try {
             const { country, timezone } = await fetchIpInfo<IpInfo>(ip);
-            setResult({ country,  time: formatTimeInZone({timezone}) });
+            setCountry(country);
+            setTimezone(timezone);
         } catch (error) {
             setError(error instanceof Error ? error.message : 'Failed to fetch IP info');
         } finally {
@@ -54,6 +56,7 @@ export function useIpLookup(initial = '') {
         isLoading,
         error,
         disabled: isLoading,
-        ...result
+        country,
+        timezone,
     };
 }

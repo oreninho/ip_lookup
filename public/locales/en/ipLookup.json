@@ -4,5 +4,7 @@
   "SUBTITLE": "Enter one or more IP addresses and get their country",
   "ADD_BUTTON_LABEL": "Add",
   "LIST_LABEL": "IP Addresses",
-  "INPUT_LABEL": "IP Address {{index}}"
+  "INPUT_LABEL": "IP Address {{index}}",
+  "IP_REQUIRED_ERROR_MESSAGE": "IP address is required.",
+  "INVALID_IP_FORMAT_ERROR_MESSAGE": "Please enter a valid IPv4 address like 123.45.67.89 — four numbers (0–255) separated by dots."
 }

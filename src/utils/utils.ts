@@ -9,10 +9,10 @@ export function formatTimeInZone({date = new Date(), timezone,config= { hour: '2
     minute: '2-digit',
     second: '2-digit',
     hour12: false}}:
-                                     { date?: Date; timezone: string }): string
+                                     { date?: Date; timezone?: string }): string
 {
     return date.toLocaleTimeString('en-US', {
-        timeZone: timezone,
+        ...(timezone ? { timeZone: timezone } : {}),
         ...config
     });
 }
