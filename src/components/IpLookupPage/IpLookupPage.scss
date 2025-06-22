@@ -7,7 +7,7 @@ $page-padding: 16px;
     text-align: left;
     .header__divider {
       position: relative;
-      left: -16px;
+      left: -$page-padding;
       width: calc(100% + 32px);
       border: none;
       border-top: 1px solid #eee;
