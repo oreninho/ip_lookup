@@ -1,6 +1,7 @@
 
 .modal{
     margin: 0;
+    padding: 0;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -11,9 +12,12 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow-x: hidden ;
-    height: 50vh;
+    height: 30vh;
+    min-height: 400px;
+    width: 50vh;
+    min-width: 600px;
     overflow-y: auto;
-    animation: slideIn 1s;
+    animation: slideIn 0.4s;
 
 }
 @keyframes slideIn {
@@ -24,25 +28,16 @@
         left: 50%;
     }
 }
-@keyframes slideOut {
-    0% {
-        left: 50%;
-    }
-    100% {
-        left: 0;
-    }
-}
 
 .modal::backdrop {
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
 }
 .modal__content {
-    flex-direction: column;
     background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-
+    height: 100%;
+    width: 100%;
+    overflow: auto;
 }
 
 .modal__close {

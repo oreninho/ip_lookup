@@ -1,7 +1,6 @@
 import {memo} from 'react';
 import './Flag.scss';
 
-//TODO : perhaps refactor to more generic component that can handle different image sources
 interface FlagProps {
     countryCode: string;
     alt: string;

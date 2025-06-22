@@ -2,16 +2,14 @@ import './Button.scss';
 
 export interface ButtonProps {
   onClick: () => void;
-  icon?: React.ReactNode;
   children: React.ReactNode;
-    className?: string;
+  className?: string;
 }
 
-export default function Button({ onClick, icon, children, className }: ButtonProps) {
+export default function Button({ onClick, children, className }: ButtonProps) {
   return (
     <button className={`button ${className}`} onClick={onClick}>
-      {icon && <span className="button__icon">{icon}</span>}
-      <span className="button__label">{children}</span>
+      <span className="button__content">{children}</span>
     </button>
   );
 }

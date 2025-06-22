@@ -1,6 +1,5 @@
 .ip-lookup-controller {
   display: flex;
-  align-items: center;
   margin-bottom: 8px;
 }
 .input-row__status {
@@ -9,8 +8,11 @@
   display: flex;
   align-items: center;
 }
+.input__container{
+  width:70%;
+}
 .spin { animation: spin 1s linear infinite; }
-.error { color: #d9534f; }
+
 .success {
   display: inline-flex;
   align-items: center;
