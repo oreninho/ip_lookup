@@ -1,6 +1,7 @@
 .ip-lookup-controller {
   display: flex;
   margin-bottom: 8px;
+  align-items: center;
 }
 .input-row__status {
   margin-left: 8px;
@@ -11,12 +12,9 @@
 .input__container{
   width:70%;
 }
-.spin { animation: spin 1s linear infinite; }
 
 .success {
   display: inline-flex;
   align-items: center;
   gap: 4px;
 }
-
-@keyframes spin { to { transform: rotate(360deg); } }

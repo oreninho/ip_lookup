@@ -53,7 +53,7 @@ export function useIpLookup(initial = '') {
         onLookup: handleLookup,
         isLoading,
         error,
-        result,
         disabled: isLoading,
+        ...result
     };
 }

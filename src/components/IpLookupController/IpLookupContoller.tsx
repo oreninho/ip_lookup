@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import {useMemo} from 'react';
 import InputRow from '../InputRow/InputRow';
 import { useIpLookup } from '../../hooks/useIpLookup.ts';
 import './IpLookupController.scss';
@@ -16,26 +16,26 @@ export default function IpLookupController({index, role}:{index?: number, role?:
         onLookup,
         isLoading,
         error,
-        result,
-        disabled
+        disabled,
+        country,
+        time,
     } = useIpLookup();
     const {t} = useTranslation('ipLookup');
 
 
-    const statusNode = useCallback(() => {
+    const status =  useMemo(() => {
         if (isLoading) {
             return <Spinner/>;
         }
-        if (result) {
-            const { country, time } = result;
+        if (country && time) {
             return (
                 <span className="success">
           <Flag alt={country} countryCode={country} /> {time}
         </span>
             );
         }
-        return null;
-    }, [isLoading, result]);
+        return;
+    }, [isLoading, country, time]);
 
     return (
         <div className="ip-lookup-controller" role={role}>
@@ -49,11 +49,12 @@ export default function IpLookupController({index, role}:{index?: number, role?:
                     placeholder={t('PLACEHOLDER')}
                     label={t('INPUT_LABEL', { index: index })}
                 />
-                {error && <ErrorMessage message={error} role="alert" aria-live="assertive" />}
+                {error && <ErrorMessage className="input-row__error" message={error} />}
             </div>
             <div className="input-row__status">
-                { statusNode() }
+                { status }
             </div>
+
         </div>
     );
 }

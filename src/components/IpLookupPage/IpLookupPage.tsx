@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import Header from '../Header/Header';
 import Button from '../Button/Button';
 import InputList from '../InputList/InputList';
 import { Plus } from 'lucide-react';
