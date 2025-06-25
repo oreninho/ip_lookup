@@ -7,6 +7,7 @@ import {useTranslation} from "react-i18next";
 export type IpInfo = {
     country: string;
     timezone: string;
+    bogon?:boolean
 };
 
 export function useIpLookup(initial = '') {
@@ -39,7 +40,11 @@ export function useIpLookup(initial = '') {
         setError(null);
 
         try {
-            const { country, timezone } = await fetchIpInfo<IpInfo>(ip);
+            const { country, timezone, bogon } = await fetchIpInfo<IpInfo>(ip);
+            if (bogon) {
+                setError(t('IP_NOT_ASSIGNED_ERROR_MESSAGE'));
+                return;
+            }
             setCountry(country);
             setTimezone(timezone);
         } catch (error) {
